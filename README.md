@@ -1,7 +1,7 @@
 # lab-exercises
 
 # Table of contents
-1. [Git workflow](#lab-01-introduction-to-git-workflow)
+1. [Git workflow](#lab-#1-introduction-to-git-workflow)
 
 # Lab #1: Introduction to Git workflow
 
