@@ -99,17 +99,17 @@ Once the integration of others' code with your feature branch is completed and t
 git push -u origin feature-lab01-certificate-name
 ```
 Now, you can make a pull request. A pull request allows your supervisor or other colleagues an opportunity provide you with another set of eyes and ensure it is indeed safe to incorporate your feature into more stable branches, such as `devel` or `master`. Since this is an exercise that currently lives on your own private account, you will act as both the developer making a pull request and as the reviewer. The simplest way to make a pull request is to:
-	1. Go to your private `lab-exercises` repository using a web browser (`https://github.com/<your_github_handle>/lab-exercises`)
-	2. Switch your branch to your feature branch, by clicking on the "Branch: master" button and selecting "feature-lab01-certificate-name" under "Branches"
-	3. Click on "New pull request" (next to "Branch: feature-lab01-certificate-name")
-	4. Check that "base" is set to "devel" and "compare" is set to "feature-lab01-certificate-name"
-	5. Click on the green button, "Create pull request"
+* Go to your private `lab-exercises` repository using a web browser (`https://github.com/<your_github_handle>/lab-exercises`)
+* Switch your branch to your feature branch, by clicking on the "Branch: master" button and selecting "feature-lab01-certificate-name" under "Branches"
+* Click on "New pull request" (next to "Branch: feature-lab01-certificate-name")
+* Check that "base" is set to "devel" and "compare" is set to "feature-lab01-certificate-name"
+* Click on the green button, "Create pull request"
 
 In order to accept a pull request, 
-	1. Go to the "Pull requests" tab
-	2. Select this particular pull request
-	3. Click on "Merge pull request" and again on "Confirm merge"
-	4. Click on "Delete branch"
+* Go to the "Pull requests" tab
+* Select this particular pull request
+* Click on "Merge pull request" and again on "Confirm merge"
+* Click on "Delete branch"
 
 The last task in this step is to create a drawing of yourself (or something that you identify with) in the certificate. Have fun with it. You will create another branch (from `devel`) called `feature-lab01-certificate-drawing` and follow similar steps as you did above. Once your feature branch is integrated with the `devel` branch, you are ready to move to the next step.
 
