@@ -1,9 +1,9 @@
 # lab-exercises
 
 # Table of contents
-1. [Git workflow](#lab-1-introduction-to-git-workflow)
+1. [Git workflow](#lab-01-introduction-to-git-workflow)
 
-# Lab 1: Introduction to Git workflow
+# Lab 01: Introduction to Git workflow
 
 ## Overview
 This lab will provide a quick review of Git, what a typical release lifecycle may look like, and the workflow you will adopt during development. Git will be used heavily in this research lab, so the primary goal of this exercise is to familiarize yourself with the general workflow we use to maintain our repositories.
@@ -92,7 +92,7 @@ git merge devel
 ```
 At times, `git merge` will indicate what are called merge conflicts. This generally means that you and your team members have been working on the same files and requires you to execute a separate set of instructions to resolve any conflicts between you and your team members' work. This is beyond the scope of this lab exercise, but if you are curious, you can read about resolving merge conflicts [here](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts).
 
-If you are thinking, why not just simply `git pull` in these scenarios? Well, we'd like to caution you from getting in the habit of relying on this command for this scenario. This is simply because you generally don't know what changes others have been making, and a `git pull` may very well overwrite hours/days of your work in a blink of an eye. By taking these conservative steps, you will guarantee full control over these situations. To read more about this, we recommend this quick [article](https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239). There is also debate over whether to use `rebase` instead of `merge`; again, this is beyond the scope of this exercise, but we recommend this (article)[https://www.atlassian.com/git/tutorials/merging-vs-rebasing] if you are interested in reading more about this discussion.
+If you are thinking, why not just simply `git pull` in these scenarios? Well, we'd like to caution you from getting in the habit of relying on this command for this scenario. This is simply because you generally don't know what changes others have been making, and a `git pull` may very well overwrite hours/days of your work in a blink of an eye. By taking these conservative steps, you will guarantee full control over these situations. To read more about this, this quick [article](https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239) summarizes the distinctions. There is also debate over whether to use `rebase` instead of `merge`; again, this is beyond the scope of this exercise, but we recommend this [article](https://www.atlassian.com/git/tutorials/merging-vs-rebasing), if you are interested in reading more about this discussion.
 
 Once the integration of others' code with your feature branch is completed and tested, you can now safely update your remote repository by
 ```
@@ -119,27 +119,26 @@ First, you will create a release branch (from devel)
 ```
 git checkout -b release/1.0 devel
 ```
-This is where you and others may spend time preparing the code to be released (eg. documentation) and determine when it is ready for primetime.
+This is where you and others may spend time preparing the code to be released (eg. documentation) and determine when it is ready to be officially released.
 
-Open your `README.md` file in a text editor (eg. vim, Sublime Text). Next to "Lab #1: Introduction to Git workflow", type "This is ready for primetime!" and save it.
+Open your `README.md` file in a text editor (eg. vim, Sublime Text). Next to "Lab 01: Introduction to Git workflow", type "This is ready for primetime!", and save it.
 
-Let's just imagine your team has reviewed everything and agrees with your declaration. Make a pull request, where this time, "base" is set to "master" and "compare" is set to "release/1.0". Accept the pull request. 
+Let's just imagine your team has reviewed everything and agrees `release/1.0` is ready to be shipped. Make a pull request, where this time, "base" is set to "master" and "compare" is set to "release/1.0". Accept the pull request. 
 
-6. **Update your development branch with changes made in the release branch.** In the process of preparing a release version of the code, the `release/1.0` branch has diverted slightly from the `devel` branch. It is important to note that while some have been part of the release process, others in your team may have continued developing new features. Therefore, `release/1.0` has to be integrated back into the `devel` branch. In order to do this, you can
+6. **Update your development branch with changes made in the release branch.** In the process of preparing a release version of the code, the `release/1.0` branch has diverted slightly from the `devel` branch. It is important to note that while some members have been part of the release process, others in your team may have continued developing new features. Therefore, `release/1.0` has to be integrated back into the `devel` branch. In order to do this, you can
 ```
 git checkout devel
 git merge release/1.0
 git push -u origin devel
 ```
-Since the `release/1.0` branch has served its purposes, you can now remove it. You can do this by removing it locally:
+Since the `release/1.0` branch has served its purposes, you can now remove it. You can do this locally by:
 ```
 git branch -d release/1.0
 ```
-and remotely:
+and remotely by:
 ```
 git push origin --delete release/1.0
 ```
 
 ## Verification
-Email your certificate and a screenshot of your network graph to a senior lab member. One way to do the latter is to go to your `lab-exercises` repository using a web browser, clicking on the "Insights" tab, and then selecting on "Network". You should be able to this similarly usings tools such as `gitk`.
-
+Once you've completed the instructions, email your certificate and a screenshot of your network graph to a senior lab member. One way to do the latter is to go to your `lab-exercises` repository using a web browser, clicking on the "Insights" tab, and then selecting on "Network". You should be able to this similarly usings tools such as `gitk`.
