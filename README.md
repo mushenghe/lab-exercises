@@ -24,6 +24,7 @@ We want you to essentially create a copy of this repository and place it your ow
 ```
 mkdir -p ~/lab01_ws/src
 ```
+
 3. **Mirror this repository.** Clone a bare copy of this [repository](https://github.com/argallab/lab-exercises.git) on your local machine:
 ```
 cd ~/lab01_ws/src
@@ -35,6 +36,7 @@ cd lab-exercises.git
 git push --mirror https://github.com/<your_github_handle>/lab-exercises.git
 ```
 Note, alternatively, the web url after `--mirror` can be copy-pasted directly from your private repository webpage by clicking on the "Clone or download" button and the clipboard icon.
+
 4. **Clean up your workspace.** Lastly, now that the mirroring step is complete, you no longer need the cloned bare copy. You can remove this by
 ```
 cd ..
@@ -142,3 +144,6 @@ git push origin --delete release/1.0
 
 ## Verification
 Once you've completed the instructions, email your certificate and a screenshot of your network graph to a senior lab member. One way to do the latter is to go to your `lab-exercises` repository using a web browser, clicking on the "Insights" tab, and then selecting on "Network". You should be able to this similarly usings tools such as `gitk`.
+
+## References
+* 
