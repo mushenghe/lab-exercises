@@ -3,7 +3,7 @@
 # Table of contents
 1. [Git workflow](#lab-01-introduction-to-git-workflow)
 
-# Lab 01: Introduction to Git workflow
+# Lab 01: Introduction to Git workflow; This is ready for primetime!
 
 ## Overview
 This lab will provide a quick review of Git, what a typical release lifecycle may look like, and the workflow you will adopt during development. Git will be used heavily in this research lab, so the primary goal of this exercise is to familiarize yourself with the general workflow we use to maintain our repositories.
@@ -25,7 +25,7 @@ We want you to essentially create a copy of this repository and place it your ow
 mkdir -p ~/lab01_ws/src
 ```
 
-3. **Mirror this repository.** Clone a bare copy of this [repository](https://github.com/argallab/lab-exercises.git) on your local machine:
+3. **Mirror this repository.** Clone a bare copy of this [repository](https://github.com/argallab/lab-exercises.git) (the argallab lab-exercises repo) on your local machine:
 ```
 cd ~/lab01_ws/src
 git clone --bare https://github.com/argallab/lab-exercises.git
@@ -42,6 +42,11 @@ Note, alternatively, the web url after `--mirror` can be copy-pasted directly fr
 cd ..
 rm -rf lab-exercises.git
 ```
+
+5. **Clone your mirrored workspace.** Now that we've mirrored the argallab repo, you'll need to clone that mirror into the `lab01_ws/src` directory on your local machine. You can do this with the familiar command
+```
+git clone https://github.com/<your_github_handle>/lab-exercises.git
+```
 The only thing left in your `src` folder should be the `lab-exercises` folder.
 
 ### Exercise
@@ -53,27 +58,27 @@ Everything in this folder represents the contents of the git repository you crea
 ```
 git status
 ```
-You can also examine the current branch structure by
+If the pre-lab was completed without error, you should see:
 ```
-git branch
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
 ```
+
 Switch your branch to `devel` and create your first feature branch by
 ```
 git checkout devel
 git checkout -b feature-lab01-certificate-name
 ```
-or
-```
-git checkout -b feature-lab01-certificate-name devel
-```
-You can confirm this using the command `git branch` again. Notice, not only have you created a new branch, but you also switched to the new branch as well, indicated by the asterisk next to `feature-lab01-certificate-name` (this is a shortcut that will come in handy in the future). This is equivalent to
+You can confirm this using the command `git branch` again. Notice, not only have you created a new branch, but you also switched to the new branch as well, indicated by the asterisk next to `feature-lab01-certificate-name` (this is a shortcut that will come in handy in the future). The process above is equivalent to
 ```
 git branch feature-lab01-certificate-name
 git checkout feature-lab01-certificate-name
 ```
-It is important to note that, currently, the `feature-lab01-certificate-name` branch exists only on your local machine -- and is *not* reflected remotely. Thus, you can resolve this discrepancy by
+It is important to note that, currently, the `feature-lab01-certificate-name` branch exists *only* on your local machine -- and is *not* reflected remotely. Thus, you can resolve this discrepancy by
 ```
-git push origin feature-lab01-certificate-name
+git push -u origin feature-lab01-certificate-name
 ```
 
 2. **Make local changes to your feature branch.** Go to your `images` folder and open `lab01_certificate.png` in your favorite photo editor (eg. Photoshop, Paint). (An application such as Preview or LibreOffice Draw will also suffice. For this exercise, the only tools you will need are textboxes and basic drawing tools.) Use a textbox to write your name in the designated area, and save it. You may have to export the changes and replace the old `lab01_certificate.png` file to accomplish this. You've done two things here: (a) made a change locally on your computer and (b) completed the feature you set out to accomplish (ie. added your name to the certificate). 
@@ -96,14 +101,14 @@ At times, `git merge` will indicate what are called merge conflicts. This genera
 
 If you are thinking, why not just simply `git pull` in these scenarios? Well, we'd like to caution you from getting in the habit of relying on this command for this scenario. This is simply because you generally don't know what changes others have been making, and a `git pull` may very well overwrite hours/days of your work in a blink of an eye. By taking these conservative steps, you will guarantee full control over these situations. To read more about this, this quick [article](https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239) summarizes the distinctions. There is also debate over whether to use `rebase` instead of `merge`; again, this is beyond the scope of this exercise, but we recommend this [article](https://www.atlassian.com/git/tutorials/merging-vs-rebasing), if you are interested in reading more about this discussion.
 
-Once the integration of others' code with your feature branch is completed and tested, you can now safely update your remote repository by
+Once the integration of others' code with your feature branch is completed and tested, you can now safely update your remote repository by pushing it (with tracking):
 ```
 git push -u origin feature-lab01-certificate-name
 ```
 Now, you can make a pull request. A pull request allows your supervisor or other colleagues an opportunity provide you with another set of eyes and ensure it is indeed safe to incorporate your feature into more stable branches, such as `devel` or `master`. Since this is an exercise that currently lives on your own private account, you will act as both the developer making a pull request and as the reviewer. The simplest way to make a pull request is to:
 * Go to your private `lab-exercises` repository using a web browser (`https://github.com/<your_github_handle>/lab-exercises`)
 * Switch your branch to your feature branch, by clicking on the "Branch: master" button and selecting "feature-lab01-certificate-name" under "Branches"
-* Click on "New pull request" (next to "Branch: feature-lab01-certificate-name")
+* Click on "New pull request" (next to Compare, underneath 'Go to file'/'Add file'/'Clone')
 * Check that "base" is set to "devel" and "compare" is set to "feature-lab01-certificate-name"
 * Click on the green button, "Create pull request"
 
@@ -113,21 +118,42 @@ In order to accept a pull request,
 * Click on "Merge pull request" and again on "Confirm merge"
 * Click on "Delete branch"
 
-The last task in this step is to create a drawing of yourself (or something that you identify with) in the certificate. Have fun with it. You will create another branch (from `devel`) called `feature-lab01-certificate-drawing` and follow similar steps as you did above. Once your feature branch is integrated with the `devel` branch, you are ready to move to the next step.
+The last task in this step is to create a drawing of yourself (or something that you identify with) in the certificate. Have fun with it. You will create another branch (from `devel`) called `feature-lab01-certificate-drawing` and follow similar steps (1-4) as you did above. Once your feature branch is integrated with the `devel` branch, you are ready to move to the next step.
+
+For the sake of good book-keeping, we'll want to delete `feature-lab01-certificate-drawing` on the local repo (this does not happen automatically when deleting the branch on your remote repo). Do this on your local machine with the following command:
+```
+git branch -d feature-lab01-certificate-name
+```
 
 5. **Create a release branch and integrate features to the master branch.** The lifecycle wouldn't be complete without a release. Typically, your team will develop many exciting features (more interesting than the features in this exercise, we hope) that will warrant a stable, more official version of the project. This may mean more senior members will get involved and actively engage in the review process -- to ultimately ensure that the released product meets our high standards. A significant portion of time here may be spent on editing/writing clean `README` files, finalizing which features to include, or running automatic documentation generators (eg. Doxygen) on the codebase. The process will look very similar to steps you saw in step 4.
 
-First, you will create a release branch (from devel)
+
+First, you will use a pull command to update the local repo; then, you'll create a release branch (from devel)
 ```
+git checkout devel
+git pull
 git checkout -b release/1.0 devel
 ```
 This is where you and others may spend time preparing the code to be released (eg. documentation) and determine when it is ready to be officially released.
 
 Open your `README.md` file in a text editor (eg. vim, Sublime Text). Next to "Lab 01: Introduction to Git workflow", type "This is ready for primetime!", and save it.
 
+Now we can push our new release branch edits to our remote repo:
+```
+git add README.md
+git commit -m "customized the README.md"
+git push -u origin release/1.0
+```
+
 Let's just imagine your team has reviewed everything and agrees `release/1.0` is ready to be shipped. Make a pull request, where this time, "base" is set to "master" and "compare" is set to "release/1.0". Accept the pull request. 
 
+On your local repo, you'll now need to pull the merged version of the master branch that reflects the changes made in release/1.0:
+```
+git pull origin master
+```
+
 6. **Update your development branch with changes made in the release branch.** In the process of preparing a release version of the code, the `release/1.0` branch has diverted slightly from the `devel` branch. It is important to note that while some members have been part of the release process, others in your team may have continued developing new features. Therefore, `release/1.0` has to be integrated back into the `devel` branch. In order to do this, you can
+
 ```
 git checkout devel
 git merge release/1.0
@@ -143,7 +169,11 @@ git push origin --delete release/1.0
 ```
 
 ## Verification
-Once you've completed the instructions, email your certificate and a screenshot of your network graph to a senior lab member. One way to do the latter is to go to your `lab-exercises` repository using a web browser, clicking on the "Insights" tab, and then selecting on "Network". You should be able to this similarly usings tools such as `gitk`.
+Once you've completed the instructions, email your certificate and a screenshot of your network graph to a senior lab member. One way to do the latter is to go to your `lab-exercises` repository using a web browser, clicking on the "Insights" tab, and then selecting on "Network". You should be able to this similarly usings tools such as `gitk`. If you have issues seeing the "Network" tab, let you point of contact know and a separate method can be determined for confirming module completion (e.g., github commit history, `gitk`, etc.).
 
 ## References
-* 
+* [Creating a new repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)
+* [Argallab lab-exercises repo](https://github.com/argallab/lab-exercises.git)
+* [Information on merge conflicts](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts)
+* [git fetch vs. git pull](https://medium.com/@sabbirhossain_70520/git-fetch-vs-git-pull-691823ed4239)
+* [Merging vs. rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
