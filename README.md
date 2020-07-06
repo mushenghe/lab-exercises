@@ -3,7 +3,7 @@
 # Table of contents
 1. [Git workflow](#lab-01-introduction-to-git-workflow)
 
-# Lab 01: Introduction to Git workflow
+# Lab 01: Introduction to Git workflow,This is ready for primetime!
 
 ## Overview
 This lab will provide a quick review of Git, what a typical release lifecycle may look like, and the workflow you will adopt during development. Git will be used heavily in this research lab, so the primary goal of this exercise is to familiarize yourself with the general workflow we use to maintain our repositories.
